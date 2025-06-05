@@ -30,8 +30,12 @@ namespace machine {
 }
 
 namespace cpu {
-    std::string model() {
+    std::string brand_string() {
         return str_from_sysctlbyname("machdep.cpu.brand_string");
+    }
+
+    std::string vendor() {
+        return str_from_sysctlbyname("machdep.cpu.vendor");
     }
 
     int32_t logical_cpu_count() {
@@ -52,6 +56,24 @@ namespace cpu {
 
     int64_t frequency_min() {
         return int_from_sysctlbyname<int64_t>("hw.cpufrequency_min");
+    }
+}
+
+namespace memory {
+    uint64_t physical_size() {
+        return int_from_sysctlbyname<uint64_t>("hw.memsize");
+    }
+}
+
+namespace kernel {
+    std::string osrelease() {
+        return str_from_sysctlbyname("kern.osrelease");
+    }
+    std::string osversion() {
+        return str_from_sysctlbyname("kern.osversion");
+    }
+    std::string version() {
+        return str_from_sysctlbyname("kern.version");
     }
 }
 }

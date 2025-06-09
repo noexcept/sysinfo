@@ -5,11 +5,14 @@
 #pragma once
 
 #include <string>
+#include <cstdint>
 
 namespace sysinfo {
+
 namespace machine {
     std::string model();
 }
+
 namespace cpu {
     std::string brand_string();
     std::string vendor();
@@ -18,7 +21,6 @@ namespace cpu {
     int64_t frequency();
     int64_t frequency_max();
     int64_t frequency_min();
-
 }
 
 namespace memory {
@@ -29,6 +31,6 @@ namespace kernel {
     std::string osrelease();
     std::string osversion();
     std::string version();
-
 }
+
 }
